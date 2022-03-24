@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		400F899727EC38680018E937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400F899627EC38680018E937 /* AppDelegate.swift */; };
+		400F899927EC38680018E937 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400F899827EC38680018E937 /* SceneDelegate.swift */; };
+		400F899B27EC38680018E937 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400F899A27EC38680018E937 /* ViewController.swift */; };
+		400F899E27EC38680018E937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400F899C27EC38680018E937 /* Main.storyboard */; };
+		400F89A027EC386A0018E937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400F899F27EC386A0018E937 /* Assets.xcassets */; };
+		400F89A327EC386A0018E937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400F89A127EC386A0018E937 /* LaunchScreen.storyboard */; };
+		400F89AC27EC396A0018E937 /* glm in Resources */ = {isa = PBXBuildFile; fileRef = 400F89AB27EC396A0018E937 /* glm */; };
+		400F89AE27EC39C80018E937 /* box2d in Resources */ = {isa = PBXBuildFile; fileRef = 400F89AD27EC39C80018E937 /* box2d */; };
+		400F89B127EC3A7B0018E937 /* Scene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 400F89B027EC3A7B0018E937 /* Scene.mm */; };
+		400F89B627EC3C260018E937 /* Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 400F89B527EC3C260018E937 /* Assert.cpp */; };
+		400F89BA27EC3CE30018E937 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 400F89B827EC3CE30018E937 /* Shader.cpp */; };
+		400F89BF27EC3D710018E937 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 400F89BD27EC3D710018E937 /* Shader.vsh */; };
+		400F89C027EC3D710018E937 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 400F89BE27EC3D710018E937 /* Shader.fsh */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		400F899327EC38680018E937 /* gl-pong-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gl-pong-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		400F899627EC38680018E937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		400F899827EC38680018E937 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		400F899A27EC38680018E937 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		400F899D27EC38680018E937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		400F899F27EC386A0018E937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		400F89A227EC386A0018E937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		400F89A427EC386A0018E937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		400F89AB27EC396A0018E937 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
+		400F89AD27EC39C80018E937 /* box2d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = box2d; sourceTree = "<group>"; };
+		400F89AF27EC3A7B0018E937 /* gl-pong-demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gl-pong-demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		400F89B027EC3A7B0018E937 /* Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Scene.mm; sourceTree = "<group>"; };
+		400F89B327EC3AA30018E937 /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		400F89B427EC3C260018E937 /* Assert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Assert.hpp; sourceTree = "<group>"; };
+		400F89B527EC3C260018E937 /* Assert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assert.cpp; sourceTree = "<group>"; };
+		400F89B827EC3CE30018E937 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		400F89B927EC3CE30018E937 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		400F89BD27EC3D710018E937 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		400F89BE27EC3D710018E937 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		400F899027EC38680018E937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		400F898A27EC38680018E937 = {
+			isa = PBXGroup;
+			children = (
+				400F899527EC38680018E937 /* gl-pong-demo */,
+				400F899427EC38680018E937 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		400F899427EC38680018E937 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				400F899327EC38680018E937 /* gl-pong-demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		400F899527EC38680018E937 /* gl-pong-demo */ = {
+			isa = PBXGroup;
+			children = (
+				400F89BB27EC3D4A0018E937 /* res */,
+				400F89B727EC3CB20018E937 /* core */,
+				400F89AA27EC39040018E937 /* vendor */,
+				400F899627EC38680018E937 /* AppDelegate.swift */,
+				400F899827EC38680018E937 /* SceneDelegate.swift */,
+				400F899A27EC38680018E937 /* ViewController.swift */,
+				400F899C27EC38680018E937 /* Main.storyboard */,
+				400F89A127EC386A0018E937 /* LaunchScreen.storyboard */,
+				400F899F27EC386A0018E937 /* Assets.xcassets */,
+				400F89A427EC386A0018E937 /* Info.plist */,
+				400F89B527EC3C260018E937 /* Assert.cpp */,
+				400F89B427EC3C260018E937 /* Assert.hpp */,
+				400F89B027EC3A7B0018E937 /* Scene.mm */,
+				400F89B327EC3AA30018E937 /* Scene.h */,
+				400F89AF27EC3A7B0018E937 /* gl-pong-demo-Bridging-Header.h */,
+			);
+			path = "gl-pong-demo";
+			sourceTree = "<group>";
+		};
+		400F89AA27EC39040018E937 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				400F89AD27EC39C80018E937 /* box2d */,
+				400F89AB27EC396A0018E937 /* glm */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		400F89B727EC3CB20018E937 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				400F89B827EC3CE30018E937 /* Shader.cpp */,
+				400F89B927EC3CE30018E937 /* Shader.hpp */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		400F89BB27EC3D4A0018E937 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				400F89BC27EC3D4E0018E937 /* shaders */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		400F89BC27EC3D4E0018E937 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				400F89BE27EC3D710018E937 /* Shader.fsh */,
+				400F89BD27EC3D710018E937 /* Shader.vsh */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		400F899227EC38680018E937 /* gl-pong-demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 400F89A727EC386A0018E937 /* Build configuration list for PBXNativeTarget "gl-pong-demo" */;
+			buildPhases = (
+				400F898F27EC38680018E937 /* Sources */,
+				400F899027EC38680018E937 /* Frameworks */,
+				400F899127EC38680018E937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "gl-pong-demo";
+			productName = "gl-pong-demo";
+			productReference = 400F899327EC38680018E937 /* gl-pong-demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		400F898B27EC38680018E937 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					400F899227EC38680018E937 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
+				};
+			};
+			buildConfigurationList = 400F898E27EC38680018E937 /* Build configuration list for PBXProject "gl-pong-demo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 400F898A27EC38680018E937;
+			productRefGroup = 400F899427EC38680018E937 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				400F899227EC38680018E937 /* gl-pong-demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		400F899127EC38680018E937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400F89A327EC386A0018E937 /* LaunchScreen.storyboard in Resources */,
+				400F89A027EC386A0018E937 /* Assets.xcassets in Resources */,
+				400F89BF27EC3D710018E937 /* Shader.vsh in Resources */,
+				400F899E27EC38680018E937 /* Main.storyboard in Resources */,
+				400F89AE27EC39C80018E937 /* box2d in Resources */,
+				400F89C027EC3D710018E937 /* Shader.fsh in Resources */,
+				400F89AC27EC396A0018E937 /* glm in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		400F898F27EC38680018E937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400F89B127EC3A7B0018E937 /* Scene.mm in Sources */,
+				400F899B27EC38680018E937 /* ViewController.swift in Sources */,
+				400F899727EC38680018E937 /* AppDelegate.swift in Sources */,
+				400F89B627EC3C260018E937 /* Assert.cpp in Sources */,
+				400F89BA27EC3CE30018E937 /* Shader.cpp in Sources */,
+				400F899927EC38680018E937 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		400F899C27EC38680018E937 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				400F899D27EC38680018E937 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		400F89A127EC386A0018E937 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				400F89A227EC386A0018E937 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		400F89A527EC386A0018E937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		400F89A627EC386A0018E937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		400F89A827EC386A0018E937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"GLES_SILENCE_DEPRECATION=1",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "gl-pong-demo/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.btechgames.gl-pong-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "gl-pong-demo/gl-pong-demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = (
+					"gl-pong-demo/vendor/glm",
+					"gl-pong-demo/vendor/box2d/include/box2d",
+				);
+			};
+			name = Debug;
+		};
+		400F89A927EC386A0018E937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = "GLES_SILENCE_DEPRECATION=1";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "gl-pong-demo/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.btechgames.gl-pong-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "gl-pong-demo/gl-pong-demo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = (
+					"gl-pong-demo/vendor/glm",
+					"gl-pong-demo/vendor/box2d/include/box2d",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		400F898E27EC38680018E937 /* Build configuration list for PBXProject "gl-pong-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400F89A527EC386A0018E937 /* Debug */,
+				400F89A627EC386A0018E937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		400F89A727EC386A0018E937 /* Build configuration list for PBXNativeTarget "gl-pong-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400F89A827EC386A0018E937 /* Debug */,
+				400F89A927EC386A0018E937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 400F898B27EC38680018E937 /* Project object */;
+}
