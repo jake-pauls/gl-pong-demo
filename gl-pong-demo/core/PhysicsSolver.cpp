@@ -8,12 +8,18 @@
 #include <stdio.h>
 
 #include "PhysicsSolver.hpp"
+#include "Assert.hpp"
 
 PhysicsSolver::PhysicsSolver()
-{ }
+{
+    _gravity = new b2Vec2(0.0f, -9.81f);
+    _world = new b2World(*_gravity);
+}
 
 void PhysicsSolver::Test()
 {
+    LOG("[PhysicsSolver] Running initial test...");
+    
     _groundBodyDef = new b2BodyDef;
     _groundBodyDef->position.Set(0.0f, -10.0f);
     _groundBody = _world->CreateBody(_groundBodyDef);

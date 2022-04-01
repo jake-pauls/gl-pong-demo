@@ -18,6 +18,8 @@
 #include "Shader.hpp"
 #include "Mesh.hpp"
 
+#include "Paddle.hpp"
+
 @interface Scene () {
     GLKView* _viewport;
     Shader* _shaderProgram;
@@ -26,6 +28,9 @@
     glm::mat4 _projectionMatrix;
     glm::mat4 _modelViewMatrix;
     glm::mat4 _modelViewProjectionMatrix;
+    
+    // Objects
+    Paddle* _paddle;
     
     // Meshes
     Mesh* _cubeMesh;
@@ -56,6 +61,12 @@
     GL_CALL(glClearColor(0.0f, 0.0f, 0.0f, 0.0f));
     GL_CALL(glEnable(GL_DEPTH_TEST));
     GL_CALL(glEnable(GL_CULL_FACE));
+    
+    // Physics Solver
+    _physics = new PhysicsSolver();
+    
+    // Meshes
+    _cubeMesh = new Mesh();
 }
 
 - (void)loadModels
@@ -63,13 +74,17 @@
     ASSERT([self loadMeshes]);
     
     // Testing box2d
+    _physics->Test();
+    
+    // Creating paddle
+    _paddle = new Paddle(_cubeMesh, glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 - (void)update
 {
     _projectionMatrix = glm::ortho(0, 800, 0, 600, -10, 100);
-    _modelViewMatrix = glm::mat4(1.0);
-    _modelViewProjectionMatrix = _projectionMatrix * _modelViewMatrix;
+    
+    _paddle->Update(_projectionMatrix);
 }
 
 - (void)draw
@@ -77,10 +92,8 @@
     // Clear GL viewport before drawing
     GL_CALL(glViewport(0, 0, (int) _viewport.drawableWidth, (int) _viewport.drawableHeight));
     GL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-    _shaderProgram->Bind();
     
-    // Pass MVP matrix
-    _shaderProgram->SetUniform4fv("modelViewProjectionMatrix", glm::value_ptr(_modelViewProjectionMatrix));
+    _paddle->Draw(_shaderProgram);
 }
 
 /// Loads meshes with relevant render data

@@ -15,9 +15,9 @@ class PhysicsSolver {
 public:
     PhysicsSolver();
     
-private:
     void Test();
     
+private:
     b2Vec2* _gravity;
     b2World* _world;
     
