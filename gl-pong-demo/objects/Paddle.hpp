@@ -16,22 +16,26 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+#include "Box2D/Box2D.h"
+#include "Box2D/Dynamics/b2Body.h"
+
 #include "SpriteRenderer.hpp"
 #include "Shader.hpp"
 
-#define PADDLE_SCALE_X  170.0f
-#define PADDLE_SCALE_Y   40.0f
+#define PADDLE_WIDTH   170.0f
+#define PADDLE_HEIGHT   40.0f
 
-#define PADDLE_STARTING_X         (PADDLE_SCALE_X / 2) * -1
-#define PADDLE_PLAYER_STARTING_Y  -450.0f
+#define PADDLE_STARTING_X          320.0f
+#define PADDLE_PLAYER_STARTING_Y    50.0f
+#define PADDLE_ENEMY_STARTING_Y   1086.0f
 
 class Paddle
 {
 public:
     Paddle();
-    Paddle(SpriteRenderer* sprite, glm::vec3 pos);
+    Paddle(SpriteRenderer* sprite);
     
-    void Update(glm::mat4 viewProjectionMatrix);
+    void Update(glm::mat4 viewProjectionMatrix, b2Body* physicsBody);
     void Draw(Shader* shaderProgram);
     
 private:

@@ -16,26 +16,29 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+#include "Box2D/Box2D.h"
+#include "Box2D/Dynamics/b2Body.h"
+
 #include "SpriteRenderer.hpp"
 #include "Shader.hpp"
 
-#define BALL_STARTING_X  (50.0f / 2) * -1
+#define BALL_STARTING_X   320.0f
+#define BALL_STARTING_Y   568.0f
+#define BALL_RADIUS        25.0f
 
 class Ball
 {
 public:
     Ball();
-    Ball(SpriteRenderer* sprite, glm::vec3 pos);
+    Ball(SpriteRenderer* sprite);
     
-    void Update(glm::mat4 viewProjectionMatrix);
+    void Update(glm::mat4 viewProjectionMatrix, b2Body* physicsBody);
     void Draw(Shader* shaderProgram);
     
 private:
     SpriteRenderer* _sprite;
     
     glm::mat4 _mvpMatrix, _modelMatrix;
-    
-    glm::vec3 _pos;
 };
 
 #endif /* Ball_hpp */

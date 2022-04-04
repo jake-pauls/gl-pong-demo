@@ -11,15 +11,16 @@
 Ball::Ball()
 { }
 
-Ball::Ball(SpriteRenderer* sprite, glm::vec3 pos)
-    : _sprite(sprite), _pos(pos)
+Ball::Ball(SpriteRenderer* sprite)
+    : _sprite(sprite)
 { }
 
-void Ball::Update(glm::mat4 viewProjectionMatrix)
+void Ball::Update(glm::mat4 viewProjectionMatrix, b2Body* physicsBody)
 {
-    _modelMatrix = glm::translate(glm::mat4(1.0f), _pos);
-//    _modelMatrix = glm::rotate(_modelMatrix, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    _modelMatrix = glm::scale(_modelMatrix, glm::vec3(50.0f, 50.0f, 1.0f));
+    glm::vec3 pos(physicsBody->GetPosition().x, physicsBody->GetPosition().y, 0.0f);
+    
+    _modelMatrix = glm::translate(glm::mat4(1.0f), pos);
+    _modelMatrix = glm::scale(_modelMatrix, glm::vec3(1.0f, 1.0f, 1.0f));
     
     _mvpMatrix = viewProjectionMatrix * _modelMatrix;
 }

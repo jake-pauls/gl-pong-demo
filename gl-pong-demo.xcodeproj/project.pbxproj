@@ -74,7 +74,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4006C6C227F987D20057D175 /* QuadData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadData.h; sourceTree = "<group>"; };
 		4006C6C327F987EA0057D175 /* SpriteRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteRenderer.cpp; sourceTree = "<group>"; };
 		4006C6C427F987EA0057D175 /* SpriteRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteRenderer.hpp; sourceTree = "<group>"; };
 		4006C6C627F9A94E0057D175 /* Ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
@@ -101,6 +100,7 @@
 		400F89CC27EC4CB00018E937 /* PhysicsSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicsSolver.hpp; sourceTree = "<group>"; };
 		401D7F9A27FAB7ED0007B408 /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
 		401D7F9B27FAB7ED0007B408 /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
+		401D7F9F27FAF10F0007B408 /* ScaledVertexData.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = ScaledVertexData.hpp; sourceTree = "<group>"; };
 		402C08CE27F6D89E007EC63C /* b2Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Body.cpp; sourceTree = "<group>"; };
 		402C08CF27F6D89E007EC63C /* b2World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2World.cpp; sourceTree = "<group>"; };
 		402C08D027F6D89E007EC63C /* b2Fixture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Fixture.cpp; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 		400F89B727EC3CB20018E937 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				400F89C927EC44870018E937 /* data */,
+				401D7F9E27FAF0FC0007B408 /* data */,
 				400F89B827EC3CE30018E937 /* Shader.cpp */,
 				400F89B927EC3CE30018E937 /* Shader.hpp */,
 				400F89CB27EC4CB00018E937 /* PhysicsSolver.cpp */,
@@ -290,10 +290,10 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
-		400F89C927EC44870018E937 /* data */ = {
+		401D7F9E27FAF0FC0007B408 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				4006C6C227F987D20057D175 /* QuadData.h */,
+				401D7F9F27FAF10F0007B408 /* ScaledVertexData.hpp */,
 			);
 			path = data;
 			sourceTree = "<group>";
