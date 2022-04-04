@@ -1,12 +1,12 @@
 //
-//  Paddle.hpp
+//  Ball.hpp
 //  gl-pong-demo
 //
-//  Created by Jake Pauls on 2022-04-01.
+//  Created by Jake Pauls on 2022-04-03.
 //
 
-#ifndef Paddle_hpp
-#define Paddle_hpp
+#ifndef Ball_hpp
+#define Ball_hpp
 
 #include <OpenGLES/ES3/gl.h>
 
@@ -19,20 +19,14 @@
 #include "SpriteRenderer.hpp"
 #include "Shader.hpp"
 
-#define PADDLE_SCALE_X  170.0f
-#define PADDLE_SCALE_Y   40.0f
-
-#define PADDLE_STARTING_X         (PADDLE_SCALE_X / 2) * -1
-#define PADDLE_PLAYER_STARTING_Y  -450.0f
-
-class Paddle
+class Ball
 {
 public:
-    Paddle();
-    Paddle(SpriteRenderer* sprite, glm::vec3 pos);
+    Ball();
+    Ball(SpriteRenderer* sprite, glm::vec3 pos);
     
     void Update(glm::mat4 viewProjectionMatrix);
-    void Draw(Shader* shaderProgram);
+    void Draw(Shader* shaderProgram, float numberOfVertices);
     
 private:
     SpriteRenderer* _sprite;
@@ -42,4 +36,4 @@ private:
     glm::vec3 _pos;
 };
 
-#endif /* Paddle_hpp */
+#endif /* Ball_hpp */
