@@ -38,7 +38,7 @@
     glm::mat4 _modelViewProjectionMatrix;
     
     // Objects
-    Paddle* _paddle;
+    Paddle* _playerPaddle;
     Paddle* _enemyPaddle;
     Ball* _ball;
     
@@ -53,6 +53,8 @@
 
 @implementation Scene
 
+@synthesize playerPaddleXInput;
+
 - (void)dealloc
 {
     // Shaders
@@ -66,7 +68,7 @@
     delete _scaledSprite;
    
     // Objects
-    delete _paddle;
+    delete _playerPaddle;
     delete _enemyPaddle;
     delete _ball;
 }
@@ -103,7 +105,7 @@
 {
     ASSERT([self loadSprites]);
     
-    _paddle = new Paddle(_scaledSprite);
+    _playerPaddle = new Paddle(_scaledSprite);
     
     _enemyPaddle = new Paddle(_scaledSprite);
     
@@ -124,9 +126,12 @@
 
     _physics->Update(elapsedTime / 1000.0f);
     
+    // Update player paddle transforms
+    _physics->SetPaddleTransformData(playerPaddleXInput);
+    
     // Check if each GameObject has a corresponding physics object
     if (_physics->g_PhysicsObjects.find("PLAYER_PADDLE") != _physics->g_PhysicsObjects.end())
-        _paddle->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["PLAYER_PADDLE"]);
+        _playerPaddle->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["PLAYER_PADDLE"]);
     
     if (_physics->g_PhysicsObjects.find("ENEMY_PADDLE") != _physics->g_PhysicsObjects.end())
         _enemyPaddle->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["ENEMY_PADDLE"]);
@@ -141,7 +146,7 @@
     GL_CALL(glViewport(0, 0, (int) _viewport.drawableWidth, (int) _viewport.drawableHeight));
     GL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
     
-    _paddle->Draw(_defaultShaderProgram);
+    _playerPaddle->Draw(_defaultShaderProgram);
     
     _enemyPaddle->Draw(_defaultShaderProgram);
     

@@ -12,6 +12,8 @@
 
 @interface Scene : NSObject
 
+@property float playerPaddleXInput;
+
 - (void)setup:(GLKView *)view;
 - (void)loadModels;
 - (void)update;

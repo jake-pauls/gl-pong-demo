@@ -28,6 +28,7 @@ public:
     
     void Update(float dt);
     void OnCollision();
+    void SetPaddleTransformData(float xComponent);
     
     PhysicsObjectSet g_PhysicsObjects;
     
@@ -47,6 +48,10 @@ private:
     
     // Kinematics
     b2Vec2 _ballVelocity;
+    
+    // Player Position
+    float _playerPaddleXPosition;
+    float _lastXInput;
 };
 
 #endif /* PhysicsSolver_hpp */
