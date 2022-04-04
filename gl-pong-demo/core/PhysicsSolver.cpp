@@ -13,13 +13,41 @@
 #include "Ball.hpp"
 
 PhysicsSolver::PhysicsSolver()
-    : _accumulator(0.0f), _playerPaddleXPosition(PADDLE_STARTING_X), _lastXInput(0.0f), _ballVelocity(0.0f, 10000.0f)
+    : _accumulator(0.0f), _playerPaddleXPosition(PADDLE_STARTING_X), _enemyPaddleXPosition(PADDLE_STARTING_X), _lastXInput(0.0f), _ballVelocity(0.0f, 10000.0f)
 {
     _gravity = new b2Vec2(0.0f, -9.81f);
     _world = new b2World(*_gravity);
     
     CollisionHandler* _collisionHandler = new CollisionHandler();
     _world->SetContactListener(_collisionHandler);
+    
+    // Create body definition for walls
+    b2BodyDef rightWallBodyDef;
+    rightWallBodyDef.type = b2_staticBody;
+    rightWallBodyDef.position.Set(640.0f, 568.0f);
+    
+    b2BodyDef leftWallBodyDef;
+    leftWallBodyDef.type = b2_staticBody;
+    leftWallBodyDef.position.Set(0.0f, 568.0f);
+    
+    _rightWallBody = _world->CreateBody(&rightWallBodyDef);
+    _rightWallBody->SetUserData(this);
+    
+    _leftWallBody = _world->CreateBody(&leftWallBodyDef);
+    _leftWallBody->SetUserData(this);
+    
+    b2PolygonShape wallBox;
+    wallBox.SetAsBox(1 / 2, 1136 / 2);
+        
+    b2FixtureDef wallFixtureDef;
+    wallFixtureDef.shape = &wallBox;
+    wallFixtureDef.density = 1.0f;
+    wallFixtureDef.friction = 0.0f;
+    wallFixtureDef.restitution = 0.0f;
+    
+    // TODO: Create fixture defs for walls
+    _rightWallBody->CreateFixture(&wallFixtureDef);
+    _leftWallBody->CreateFixture(&wallFixtureDef);
     
     // Create body definition for player and enemy paddles
     b2BodyDef playerPaddleBodyDef;
@@ -91,6 +119,11 @@ void PhysicsSolver::Update(float dt)
         _ballBody->ApplyLinearImpulse(_ballVelocity, _ballBody->GetPosition(), true);
     }
     
+    if (_ballBody->GetPosition().y >= 1200 || _ballBody->GetPosition().y <= -5)
+    {
+        _ballBody->SetTransform(b2Vec2(BALL_STARTING_X, BALL_STARTING_Y), 0.0f);
+    }
+    
     while (_accumulator >= MAX_TIMESTEP)
     {
         _accumulator -= MAX_TIMESTEP;
@@ -106,7 +139,9 @@ void PhysicsSolver::Update(float dt)
 /// Reverse the ball's y-component when it collides with a surface
 void PhysicsSolver::OnCollision()
 {
+    // TODO: Determine ball angles and change velocity vector
     _ballVelocity.y *= -1;
+    // _ballVelocity.x *= -1;
 }
 
 /// Apply input updates to physics transforms
@@ -122,9 +157,16 @@ void PhysicsSolver::SetPaddleTransformData(float xInput)
             _playerPaddleXPosition -= xSensitivity;
     }
     
+    if (_enemyPaddleXPosition <= (640.0f - PADDLE_WIDTH / 2))
+        _enemyPaddleXPosition += 1.0f;
+    else
+        _enemyPaddleXPosition -= 1.0f;
+    
+    LOG("leftWall " << _leftWallBody->GetPosition().x << " rightWall " << _rightWallBody->GetPosition().x);
+    
     // Player/enemy y-components are constantly being set which prevents them from being manipulated by forces
     _playerPaddleBody->SetTransform(b2Vec2(_playerPaddleXPosition, PADDLE_PLAYER_STARTING_Y), 0.0f);
-    _enemyPaddleBody->SetTransform(b2Vec2(PADDLE_STARTING_X, PADDLE_ENEMY_STARTING_Y), 0.0f);
+    _enemyPaddleBody->SetTransform(b2Vec2(_enemyPaddleXPosition, PADDLE_ENEMY_STARTING_Y), 0.0f);
     
     // Store last xComponent to prevent paddle from continuously moving when input is held
     _lastXInput = xInput;

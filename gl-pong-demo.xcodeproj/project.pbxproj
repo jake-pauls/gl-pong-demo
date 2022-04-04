@@ -72,6 +72,7 @@
 		402C095D27F6D89E007EC63C /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C092F27F6D89E007EC63C /* b2CollideEdge.cpp */; };
 		402C095E27F6D89E007EC63C /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C093027F6D89E007EC63C /* b2Collision.cpp */; };
 		402C09F527F6DEBF007EC63C /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C09F327F6DEBF007EC63C /* Paddle.cpp */; };
+		40A8615227FBAEFA0066A5E7 /* Wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40A8615027FBAEFA0066A5E7 /* Wall.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +200,8 @@
 		402C093027F6D89E007EC63C /* b2Collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Collision.cpp; sourceTree = "<group>"; };
 		402C09F327F6DEBF007EC63C /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
 		402C09F427F6DEBF007EC63C /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
+		40A8615027FBAEFA0066A5E7 /* Wall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
+		40A8615127FBAEFA0066A5E7 /* Wall.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wall.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +469,8 @@
 				402C09F427F6DEBF007EC63C /* Paddle.hpp */,
 				4006C6C627F9A94E0057D175 /* Ball.cpp */,
 				4006C6C727F9A94E0057D175 /* Ball.hpp */,
+				40A8615027FBAEFA0066A5E7 /* Wall.cpp */,
+				40A8615127FBAEFA0066A5E7 /* Wall.hpp */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				402C094627F6D89E007EC63C /* b2Joint.cpp in Sources */,
 				402C094A27F6D89E007EC63C /* b2Island.cpp in Sources */,
 				402C093927F6D89E007EC63C /* b2ContactSolver.cpp in Sources */,
+				40A8615227FBAEFA0066A5E7 /* Wall.cpp in Sources */,
 				402C093327F6D89E007EC63C /* b2Fixture.cpp in Sources */,
 				400F89B127EC3A7B0018E937 /* Scene.mm in Sources */,
 				402C093627F6D89E007EC63C /* b2ChainAndCircleContact.cpp in Sources */,

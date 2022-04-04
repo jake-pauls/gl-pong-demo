@@ -25,6 +25,7 @@ typedef std::unordered_map<std::string, b2Body*> PhysicsObjectSet;
 class PhysicsSolver {
 public:
     PhysicsSolver();
+//    PhysicsSolver(std::pair<float, float> rightWallDimensions, std::pair<float, float> leftWallDimensions);
     
     void Update(float dt);
     void OnCollision();
@@ -45,12 +46,15 @@ private:
     b2Body* _playerPaddleBody;
     b2Body* _enemyPaddleBody;
     b2Body* _ballBody;
+    b2Body* _leftWallBody;
+    b2Body* _rightWallBody;
     
     // Kinematics
     b2Vec2 _ballVelocity;
     
     // Player Position
     float _playerPaddleXPosition;
+    float _enemyPaddleXPosition;
     float _lastXInput;
 };
 
