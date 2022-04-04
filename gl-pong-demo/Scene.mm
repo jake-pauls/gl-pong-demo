@@ -25,7 +25,10 @@
 
 @interface Scene () {
     GLKView* _viewport;
-    Shader* _shaderProgram;
+    
+    // Shaders
+    Shader* _defaultShaderProgram;
+    Shader* _circleShaderProgram;
     
     // "Camera" Matrices
     glm::mat4 _projectionMatrix;
@@ -39,8 +42,6 @@
     
     // Sprites
     SpriteRenderer* _basicSprite;
-    SpriteRenderer* _circleSprite;
-    std::vector<float> _circleVertices;
     
     // Physics
     PhysicsSolver* _physics;
@@ -57,8 +58,7 @@
     
     // Sprites
     delete _basicSprite;
-    delete _circleSprite;
-    
+   
     // Objects
     delete _paddle;
     delete _enemyPaddle;
@@ -88,15 +88,6 @@
     
     // Sprites
     _basicSprite = new SpriteRenderer();
-    _circleSprite = new SpriteRenderer();
-    
-    _circleVertices = std::vector<float>(60);
-    _circleSprite->CreateCircleSprite2(_circleVertices, 30.0f, 1.0f);
-    
-    for (unsigned int i = 0; i < _circleVertices.size(); i++)
-    {
-        LOG("[i:" << i << "] " << _circleVertices[i]);
-    }
 }
 
 - (void)loadModels
@@ -109,7 +100,7 @@
     // Creating paddle
     _paddle = new Paddle(_basicSprite, glm::vec3(PADDLE_STARTING_X, PADDLE_PLAYER_STARTING_Y, 0.0f));
     _enemyPaddle = new Paddle(_basicSprite, glm::vec3(PADDLE_STARTING_X, -PADDLE_PLAYER_STARTING_Y, 0.0f));
-    _ball = new Ball(_circleSprite, glm::vec3(0.0f, 0.0f, 0.0f));
+    _ball = new Ball(_basicSprite, glm::vec3(BALL_STARTING_X, 0.0f, 0.0f));
 }
 
 - (void)update
@@ -121,7 +112,7 @@
     
     // Draw orthographic with (0,0) at the center of the screen
     // ie: If viewport resolution is 1000x500, this is ortho setup with: x = [-1000, 1000] andy = [-500, 500]
-     _projectionMatrix = glm::ortho(-halfWidth, halfWidth, -halfHeight, halfHeight,  -1.0f, 1.0f);
+     _projectionMatrix = glm::ortho(-halfWidth, halfWidth, -halfHeight, halfHeight,  1.0f, -1.0f);
     
     // In orthographic view, the view matrix remains the identity
     _viewProjectionMatrix = _projectionMatrix * glm::mat4(1.0);
@@ -139,11 +130,11 @@
     GL_CALL(glViewport(0, 0, (int) _viewport.drawableWidth, (int) _viewport.drawableHeight));
     GL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
     
-    _paddle->Draw(_shaderProgram);
+    _paddle->Draw(_defaultShaderProgram);
     
-    _enemyPaddle->Draw(_shaderProgram);
+    _enemyPaddle->Draw(_defaultShaderProgram);
     
-    _ball->Draw(_shaderProgram, (float) _circleVertices.size());
+    _ball->Draw(_circleShaderProgram);
 }
 
 /// Loads sprites with relevant render data
@@ -156,19 +147,14 @@
         sizeof(QuadTexCoords)
     });
     
-    float* circleVertices = &_circleVertices[0];
-    _circleSprite->SetupSprite(SpriteRenderer::SpriteData{
-        circleVertices,
-        sizeof(circleVertices),
-    });
-    
     return true;
 }
 
 /// Sets up basic shaders
 - (bool)setupShaders
 {
-    _shaderProgram = new Shader([self retrieveFilePathByName:"Shader.vsh"], [self retrieveFilePathByName:"Shader.fsh"]);
+    _defaultShaderProgram = new Shader([self retrieveFilePathByName:"Shader.vsh"], [self retrieveFilePathByName:"Shader.fsh"]);
+    _circleShaderProgram = new Shader([self retrieveFilePathByName:"Circle.vsh"], [self retrieveFilePathByName:"Circle.fsh"]);
     
     return true;
 }

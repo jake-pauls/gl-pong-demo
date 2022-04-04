@@ -8,15 +8,15 @@
 #ifndef QuadData_h
 #define QuadData_h
 
-float QuadVertices[12] =
+float QuadVertices[18] =
 {
-    0.0f, 1.0f,
-    1.0f, 0.0f,
-    0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f,
+    1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
     
-    0.0f, 1.0f,
-    1.0f, 1.0f,
-    1.0f, 0.0f,
+    0.0f, 1.0f, 0.0f,
+    1.0f, 1.0f, 0.0f,
+    1.0f, 0.0f, 0.0f
 };
 
 float QuadTexCoords[12] =

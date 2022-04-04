@@ -22,6 +22,8 @@
 		400F89BF27EC3D710018E937 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 400F89BD27EC3D710018E937 /* Shader.vsh */; };
 		400F89C027EC3D710018E937 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 400F89BE27EC3D710018E937 /* Shader.fsh */; };
 		400F89CD27EC4CB00018E937 /* PhysicsSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 400F89CB27EC4CB00018E937 /* PhysicsSolver.cpp */; };
+		401D7F9C27FAB7ED0007B408 /* Circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 401D7F9A27FAB7ED0007B408 /* Circle.vsh */; };
+		401D7F9D27FAB7ED0007B408 /* Circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 401D7F9B27FAB7ED0007B408 /* Circle.fsh */; };
 		402C093127F6D89E007EC63C /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CE27F6D89E007EC63C /* b2Body.cpp */; };
 		402C093227F6D89E007EC63C /* b2World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CF27F6D89E007EC63C /* b2World.cpp */; };
 		402C093327F6D89E007EC63C /* b2Fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08D027F6D89E007EC63C /* b2Fixture.cpp */; };
@@ -97,6 +99,8 @@
 		400F89BE27EC3D710018E937 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
 		400F89CB27EC4CB00018E937 /* PhysicsSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsSolver.cpp; sourceTree = "<group>"; };
 		400F89CC27EC4CB00018E937 /* PhysicsSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicsSolver.hpp; sourceTree = "<group>"; };
+		401D7F9A27FAB7ED0007B408 /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
+		401D7F9B27FAB7ED0007B408 /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
 		402C08CE27F6D89E007EC63C /* b2Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Body.cpp; sourceTree = "<group>"; };
 		402C08CF27F6D89E007EC63C /* b2World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2World.cpp; sourceTree = "<group>"; };
 		402C08D027F6D89E007EC63C /* b2Fixture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Fixture.cpp; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 		400F89BC27EC3D4E0018E937 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				401D7F9B27FAB7ED0007B408 /* Circle.fsh */,
+				401D7F9A27FAB7ED0007B408 /* Circle.vsh */,
 				400F89BE27EC3D710018E937 /* Shader.fsh */,
 				400F89BD27EC3D710018E937 /* Shader.vsh */,
 			);
@@ -521,7 +527,9 @@
 				400F89A327EC386A0018E937 /* LaunchScreen.storyboard in Resources */,
 				400F89A027EC386A0018E937 /* Assets.xcassets in Resources */,
 				400F89BF27EC3D710018E937 /* Shader.vsh in Resources */,
+				401D7F9D27FAB7ED0007B408 /* Circle.fsh in Resources */,
 				400F899E27EC38680018E937 /* Main.storyboard in Resources */,
+				401D7F9C27FAB7ED0007B408 /* Circle.vsh in Resources */,
 				400F89C027EC3D710018E937 /* Shader.fsh in Resources */,
 				400F89AC27EC396A0018E937 /* glm in Resources */,
 			);

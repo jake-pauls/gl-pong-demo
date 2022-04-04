@@ -19,6 +19,8 @@
 #include "SpriteRenderer.hpp"
 #include "Shader.hpp"
 
+#define BALL_STARTING_X  (50.0f / 2) * -1
+
 class Ball
 {
 public:
@@ -26,7 +28,7 @@ public:
     Ball(SpriteRenderer* sprite, glm::vec3 pos);
     
     void Update(glm::mat4 viewProjectionMatrix);
-    void Draw(Shader* shaderProgram, float numberOfVertices);
+    void Draw(Shader* shaderProgram);
     
 private:
     SpriteRenderer* _sprite;

@@ -9,6 +9,7 @@
 #define SpriteRenderer_hpp
 
 #include <vector>
+#include <math.h>
 
 #include <glm/glm.hpp>
 
@@ -28,8 +29,6 @@ public:
     
     void SetupSprite(SpriteData sprite);
     void CreateCircleSprite(std::vector<float>& vertices, float x, float y, float radius);
-    void CreateCircleSprite2(std::vector<float>& vertices, float numberOfPoints, float radius);
-    void CreateCircle(std::vector<float>& vertices, float numberOfPoints, float radius);
     
     GLuint VAO, VBO, TBO;
 };
