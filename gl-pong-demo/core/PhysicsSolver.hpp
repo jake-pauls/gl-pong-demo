@@ -14,6 +14,8 @@
 #include "Box2D/Box2D.h"
 #include "Box2D/Dynamics/b2Body.h"
 
+#include "CollisionHandler.hpp"
+
 #define MAX_TIMESTEP                    1.0f / 60.0f
 #define NUMBER_OF_VELOCITY_ITERATIONS          10.0f
 #define NUMBER_OF_POSITION_ITERATIONS           3.0f
@@ -24,9 +26,8 @@ class PhysicsSolver {
 public:
     PhysicsSolver();
     
-    void Test();
-    
     void Update(float dt);
+    void OnCollision();
     
     PhysicsObjectSet g_PhysicsObjects;
     
@@ -44,10 +45,8 @@ private:
     b2Body* _enemyPaddleBody;
     b2Body* _ballBody;
     
-    //  For Test()
-    b2Body* _groundBody;
-    b2BodyDef* _groundBodyDef;
-    b2PolygonShape* _groundBox;
+    // Kinematics
+    b2Vec2 _ballVelocity;
 };
 
 #endif /* PhysicsSolver_hpp */

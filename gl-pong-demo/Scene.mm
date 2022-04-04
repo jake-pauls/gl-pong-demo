@@ -89,6 +89,9 @@
     // Disable backface culling for sprite quads
     GL_CALL(glDisable(GL_CULL_FACE));
     
+    // Initialize time
+    _lastTime = std::chrono::steady_clock::now();
+
     // Initialize box2d
     _physics = new PhysicsSolver();
     

@@ -24,6 +24,7 @@
 		400F89CD27EC4CB00018E937 /* PhysicsSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 400F89CB27EC4CB00018E937 /* PhysicsSolver.cpp */; };
 		401D7F9C27FAB7ED0007B408 /* Circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 401D7F9A27FAB7ED0007B408 /* Circle.vsh */; };
 		401D7F9D27FAB7ED0007B408 /* Circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 401D7F9B27FAB7ED0007B408 /* Circle.fsh */; };
+		401D7FA227FAFD5B0007B408 /* CollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 401D7FA027FAFD5B0007B408 /* CollisionHandler.cpp */; };
 		402C093127F6D89E007EC63C /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CE27F6D89E007EC63C /* b2Body.cpp */; };
 		402C093227F6D89E007EC63C /* b2World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CF27F6D89E007EC63C /* b2World.cpp */; };
 		402C093327F6D89E007EC63C /* b2Fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08D027F6D89E007EC63C /* b2Fixture.cpp */; };
@@ -101,6 +102,8 @@
 		401D7F9A27FAB7ED0007B408 /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
 		401D7F9B27FAB7ED0007B408 /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
 		401D7F9F27FAF10F0007B408 /* ScaledVertexData.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = ScaledVertexData.hpp; sourceTree = "<group>"; };
+		401D7FA027FAFD5B0007B408 /* CollisionHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionHandler.cpp; sourceTree = "<group>"; };
+		401D7FA127FAFD5B0007B408 /* CollisionHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionHandler.hpp; sourceTree = "<group>"; };
 		402C08CE27F6D89E007EC63C /* b2Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Body.cpp; sourceTree = "<group>"; };
 		402C08CF27F6D89E007EC63C /* b2World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2World.cpp; sourceTree = "<group>"; };
 		402C08D027F6D89E007EC63C /* b2Fixture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Fixture.cpp; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				400F89CC27EC4CB00018E937 /* PhysicsSolver.hpp */,
 				4006C6C327F987EA0057D175 /* SpriteRenderer.cpp */,
 				4006C6C427F987EA0057D175 /* SpriteRenderer.hpp */,
+				401D7FA027FAFD5B0007B408 /* CollisionHandler.cpp */,
+				401D7FA127FAFD5B0007B408 /* CollisionHandler.hpp */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				402C095A27F6D89E007EC63C /* b2PolygonShape.cpp in Sources */,
 				4006C6C527F987EA0057D175 /* SpriteRenderer.cpp in Sources */,
 				400F89BA27EC3CE30018E937 /* Shader.cpp in Sources */,
+				401D7FA227FAFD5B0007B408 /* CollisionHandler.cpp in Sources */,
 				402C093D27F6D89E007EC63C /* b2WorldCallbacks.cpp in Sources */,
 				400F899927EC38680018E937 /* SceneDelegate.swift in Sources */,
 				400F89CD27EC4CB00018E937 /* PhysicsSolver.cpp in Sources */,
