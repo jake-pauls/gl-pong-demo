@@ -1,0 +1,2 @@
+# Remove 'Box2D' as a vendored path
+Box2D/** linguist-vendored=false

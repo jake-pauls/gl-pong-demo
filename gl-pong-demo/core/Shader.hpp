@@ -1,8 +1,8 @@
 //
 //  Shader.hpp
-//  gl-maze-demo
+//  gl-pong-demo
 //
-//  Created by Jake Pauls on 2022-03-09.
+//  Created by Jake Pauls on 2022-03-23.
 //
 
 #ifndef Shader_hpp

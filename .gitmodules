@@ -1,6 +1,3 @@
 [submodule "gl-pong-demo/vendor/glm"]
 	path = gl-pong-demo/vendor/glm
 	url = https://github.com/g-truc/glm.git
-[submodule "gl-pong-demo/vendor/box2d"]
-	path = gl-pong-demo/vendor/box2d
-	url = https://github.com/erincatto/box2d.git
