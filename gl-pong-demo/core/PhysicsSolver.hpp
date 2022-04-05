@@ -34,6 +34,8 @@ public:
     PhysicsObjectSet g_PhysicsObjects;
     
     bool IsBallLaunched = true;
+    int playerScore = 0;
+    int enemyScore = 0;
     
 private:
     float _accumulator;

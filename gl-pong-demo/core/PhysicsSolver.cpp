@@ -119,9 +119,16 @@ void PhysicsSolver::Update(float dt)
         _ballBody->ApplyLinearImpulse(_ballVelocity, _ballBody->GetPosition(), true);
     }
     
-    if (_ballBody->GetPosition().y >= 1200 || _ballBody->GetPosition().y <= -5)
+    // Score Condition
+    if (_ballBody->GetPosition().y >= 1200)
     {
         _ballBody->SetTransform(b2Vec2(BALL_STARTING_X, BALL_STARTING_Y), 0.0f);
+        playerScore += 1;
+    }
+    if (_ballBody->GetPosition().y <= -5)
+    {
+        _ballBody->SetTransform(b2Vec2(BALL_STARTING_X, BALL_STARTING_Y), 0.0f);
+        enemyScore += 1;
     }
     
     while (_accumulator >= MAX_TIMESTEP)
@@ -167,30 +174,33 @@ void PhysicsSolver::OnCollision(int value)
 /// Apply input updates to physics transforms
 void PhysicsSolver::SetPaddleTransformData(float xInput)
 {
-    float xSensitivity = 54.0f;
+    float xSensitivity = 20.0f;
     
     if (_lastXInput != xInput)
     {
         if (xInput > 0.0f)
-            _playerPaddleXPosition += xSensitivity;
-        else if (xInput < 0.0f)
-            _playerPaddleXPosition -= xSensitivity;
+            if (_playerPaddleXPosition <= (630.0f - xSensitivity - PADDLE_WIDTH / 2))
+                _playerPaddleXPosition += xSensitivity;
+        if (xInput < 0.0f)
+            if (_playerPaddleXPosition >= (10.0f + xSensitivity + PADDLE_WIDTH / 2))
+                _playerPaddleXPosition -= xSensitivity;
     }
     
     // Set Enemy Paddle AI Direction
     if (_enemyPaddleXPosition >= (630.0f - PADDLE_WIDTH / 2))
         directionRight = false;
-    else if (_enemyPaddleXPosition <= (10 + PADDLE_WIDTH / 2))
+    else if (_enemyPaddleXPosition <= (10.0f + PADDLE_WIDTH / 2))
         directionRight = true;
     
     // Move Enemy Paddle
     if (directionRight == true)
-        _enemyPaddleXPosition += 10.0f;
+        _enemyPaddleXPosition += 2.5f;
     else if (directionRight == false)
-        _enemyPaddleXPosition -= 10.0f;
+        _enemyPaddleXPosition -= 2.5f;
+
 
     
-    LOG("leftWall " << _leftWallBody->GetPosition().x << " rightWall " << _rightWallBody->GetPosition().x);
+    //LOG("leftWall " << _leftWallBody->GetPosition().x << " rightWall " << _rightWallBody->GetPosition().x);
     
     // Player/enemy y-components are constantly being set which prevents them from being manipulated by forces
     _playerPaddleBody->SetTransform(b2Vec2(_playerPaddleXPosition, PADDLE_PLAYER_STARTING_Y), 0.0f);
