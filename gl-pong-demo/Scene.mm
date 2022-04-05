@@ -127,7 +127,10 @@
     _lastTime = currentTime;
 
     _physics->Update(elapsedTime / 1000.0f);
+    
+    // Update score UI
     playerScore = _physics->playerScore;
+    enemyScore = _physics->enemyScore;
     
     // Update player paddle transforms
     _physics->SetPaddleTransformData(playerPaddleXInput);

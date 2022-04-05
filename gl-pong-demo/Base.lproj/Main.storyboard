@@ -22,6 +22,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mC6-zE-Qsv" userLabel="EnemyScore">
+                                <rect key="frame" x="159" y="272" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -30,7 +36,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="EnemyScore" destination="J57-om-wIo" id="XSl-1w-1Ld"/>
+                        <outlet property="EnemyScore" destination="mC6-zE-Qsv" id="tRz-er-d5s"/>
                         <outlet property="PlayerScore" destination="J57-om-wIo" id="ymD-eZ-YhI"/>
                     </connections>
                 </viewController>
