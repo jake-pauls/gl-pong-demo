@@ -12,6 +12,10 @@
 
 @interface Scene : NSObject
 
+@property float playerPaddleXInput;
+@property int playerScore;
+@property int enemyScore;
+
 - (void)setup:(GLKView *)view;
 - (void)loadModels;
 - (void)update;

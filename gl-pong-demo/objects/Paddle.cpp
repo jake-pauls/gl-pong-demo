@@ -11,14 +11,16 @@
 Paddle::Paddle()
 { }
 
-Paddle::Paddle(SpriteRenderer* sprite, glm::vec3 pos)
-    : _sprite(sprite), _pos(pos)
+Paddle::Paddle(SpriteRenderer* sprite)
+    : _sprite(sprite)
 { }
 
-void Paddle::Update(glm::mat4 viewProjectionMatrix)
+void Paddle::Update(glm::mat4 viewProjectionMatrix, b2Body* physicsBody)
 {
-    _modelMatrix = glm::translate(glm::mat4(1.0f), _pos);
-    _modelMatrix = glm::scale(_modelMatrix, glm::vec3(PADDLE_SCALE_X, PADDLE_SCALE_Y, 1.0f));
+    glm::vec3 pos(physicsBody->GetPosition().x, physicsBody->GetPosition().y, 0.0f);
+    
+    _modelMatrix = glm::translate(glm::mat4(1.0f), pos);
+    _modelMatrix = glm::scale(_modelMatrix, glm::vec3(1.0f, 1.0f, 1.0f));
     
     _mvpMatrix = viewProjectionMatrix * _modelMatrix;
 }

@@ -6,6 +6,7 @@
 //
 
 #include <vector>
+#include <chrono>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -13,7 +14,7 @@
 
 #import "Scene.h"
 
-#include "QuadData.h"
+#include "ScaledVertexData.hpp"
 
 #include "PhysicsSolver.hpp"
 #include "Assert.hpp"
@@ -25,6 +26,7 @@
 
 @interface Scene () {
     GLKView* _viewport;
+    std::chrono::time_point<std::chrono::steady_clock> _lastTime;
     
     // Shaders
     Shader* _defaultShaderProgram;
@@ -36,12 +38,12 @@
     glm::mat4 _modelViewProjectionMatrix;
     
     // Objects
-    Paddle* _paddle;
+    Paddle* _playerPaddle;
     Paddle* _enemyPaddle;
     Ball* _ball;
     
     // Sprites
-    SpriteRenderer* _basicSprite;
+    SpriteRenderer* _scaledSprite;
     
     // Physics
     PhysicsSolver* _physics;
@@ -51,16 +53,24 @@
 
 @implementation Scene
 
+@synthesize playerPaddleXInput;
+@synthesize playerScore;
+@synthesize enemyScore;
+
 - (void)dealloc
 {
+    // Shaders
+    delete _defaultShaderProgram;
+    delete _circleShaderProgram;
+    
     // Physics
     delete _physics;
     
     // Sprites
-    delete _basicSprite;
+    delete _scaledSprite;
    
     // Objects
-    delete _paddle;
+    delete _playerPaddle;
     delete _enemyPaddle;
     delete _ball;
 }
@@ -83,45 +93,57 @@
     // Disable backface culling for sprite quads
     GL_CALL(glDisable(GL_CULL_FACE));
     
+    // Initialize time
+    _lastTime = std::chrono::steady_clock::now();
+
     // Initialize box2d
     _physics = new PhysicsSolver();
     
     // Sprites
-    _basicSprite = new SpriteRenderer();
+    _scaledSprite = new SpriteRenderer();
 }
 
 - (void)loadModels
 {
     ASSERT([self loadSprites]);
     
-    // Testing box2d
-    _physics->Test();
+    _playerPaddle = new Paddle(_scaledSprite);
     
-    // Creating paddle
-    _paddle = new Paddle(_basicSprite, glm::vec3(PADDLE_STARTING_X, PADDLE_PLAYER_STARTING_Y, 0.0f));
-    _enemyPaddle = new Paddle(_basicSprite, glm::vec3(PADDLE_STARTING_X, -PADDLE_PLAYER_STARTING_Y, 0.0f));
-    _ball = new Ball(_basicSprite, glm::vec3(BALL_STARTING_X, 0.0f, 0.0f));
+    _enemyPaddle = new Paddle(_scaledSprite);
+    
+    _ball = new Ball(_scaledSprite);
 }
 
 - (void)update
 {
-     float aspectRatio = (float) _viewport.drawableWidth / (float) _viewport.drawableHeight;
-    
-     float halfHeight = _viewport.drawableHeight / 2.0f;
-     float halfWidth = halfHeight * aspectRatio;
-    
-    // Draw orthographic with (0,0) at the center of the screen
-    // ie: If viewport resolution is 1000x500, this is ortho setup with: x = [-1000, 1000] andy = [-500, 500]
-     _projectionMatrix = glm::ortho(-halfWidth, halfWidth, -halfHeight, halfHeight,  1.0f, -1.0f);
+     _projectionMatrix = glm::ortho(0.0f, (float) _viewport.drawableWidth, 0.0f, (float) _viewport.drawableHeight,  -1.0f, 1.0f);
     
     // In orthographic view, the view matrix remains the identity
     _viewProjectionMatrix = _projectionMatrix * glm::mat4(1.0);
     
-    _paddle->Update(_viewProjectionMatrix);
+    // Calculate elapsed time and update PhysicsSolver
+    auto currentTime = std::chrono::steady_clock::now();
+    auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - _lastTime).count();
+    _lastTime = currentTime;
+
+    _physics->Update(elapsedTime / 1000.0f);
     
-    _enemyPaddle->Update(_viewProjectionMatrix);
+    // Update score UI
+    playerScore = _physics->playerScore;
+    enemyScore = _physics->enemyScore;
     
-    _ball->Update(_viewProjectionMatrix);
+    // Update player paddle transforms
+    _physics->SetPaddleTransformData(playerPaddleXInput);
+    
+    // Check if each GameObject has a corresponding physics object
+    if (_physics->g_PhysicsObjects.find("PLAYER_PADDLE") != _physics->g_PhysicsObjects.end())
+        _playerPaddle->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["PLAYER_PADDLE"]);
+    
+    if (_physics->g_PhysicsObjects.find("ENEMY_PADDLE") != _physics->g_PhysicsObjects.end())
+        _enemyPaddle->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["ENEMY_PADDLE"]);
+    
+    if (_physics->g_PhysicsObjects.find("BALL") != _physics->g_PhysicsObjects.end())
+        _ball->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["BALL"]);
 }
 
 - (void)draw
@@ -130,7 +152,7 @@
     GL_CALL(glViewport(0, 0, (int) _viewport.drawableWidth, (int) _viewport.drawableHeight));
     GL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
     
-    _paddle->Draw(_defaultShaderProgram);
+    _playerPaddle->Draw(_defaultShaderProgram);
     
     _enemyPaddle->Draw(_defaultShaderProgram);
     
@@ -140,11 +162,11 @@
 /// Loads sprites with relevant render data
 - (bool)loadSprites
 {
-    _basicSprite->SetupSprite(SpriteRenderer::SpriteData{
-        QuadVertices,
-        sizeof(QuadVertices),
-        QuadTexCoords,
-        sizeof(QuadTexCoords)
+    _scaledSprite->SetupSprite(SpriteRenderer::SpriteData{
+        ScaledVerticies,
+        sizeof(ScaledVerticies),
+        ScaledVerticies,
+        sizeof(ScaledVerticies)
     });
     
     return true;

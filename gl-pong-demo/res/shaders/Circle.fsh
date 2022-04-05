@@ -8,8 +8,8 @@ out vec4 FragColor;
 in highp vec2 textureCoordinate;
 in vec4 v_color;
 
-const highp vec2 center = vec2(0.5, 0.5);
-const highp float radius = 0.5;
+const highp vec2 center = vec2(0.0, 0.0f);
+const highp float radius = 20.0;
 
 void main()
 {

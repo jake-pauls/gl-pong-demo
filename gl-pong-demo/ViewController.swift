@@ -11,12 +11,19 @@ extension ViewController: GLKViewControllerDelegate {
     // Updates scene each frame
     func glkViewControllerUpdate(_ controller: GLKViewController) {
         scene.update()
+        
+        PlayerScore.text = String(scene.playerScore);
+        EnemyScore.text = String(scene.enemyScore);
     }
 }
 
 class ViewController: GLKViewController {
     private var context: EAGLContext?
     private var scene: Scene!
+    
+    @IBOutlet weak var PlayerScore: UITextField!
+    
+    @IBOutlet weak var EnemyScore: UITextField!
     
     private func setupGLView() {
         context = EAGLContext(api: .openGLES3)
@@ -35,10 +42,36 @@ class ViewController: GLKViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGLView()
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.doPan(_:)))
+        view.addGestureRecognizer(panGesture)
     }
     
     // Renders the scene each frame
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         scene.draw()
+    }
+    
+    @objc func doPan(_ sender: UIPanGestureRecognizer) {
+        let changedDistance = sender.translation(in: view)
+        
+        if changedDistance.x > 25 {
+            scene.playerPaddleXInput = Float(changedDistance.x)
+            print("x -> ", changedDistance.x)
+            sender.setTranslation(.zero, in: view)
+            sender.reset()
+        }
+        
+        if changedDistance.x < -25 {
+            scene.playerPaddleXInput = Float(changedDistance.x)
+            print("x -> ", changedDistance.x)
+            sender.setTranslation(.zero, in: view)
+            sender.reset()
+        }
+        
+        // Reset the x displacement once the gesture ends
+        if sender.state == .ended {
+            scene.playerPaddleXInput = 0.0
+        }
     }
 }

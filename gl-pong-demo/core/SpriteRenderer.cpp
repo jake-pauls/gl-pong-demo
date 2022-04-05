@@ -21,7 +21,7 @@ void SpriteRenderer::SetupSprite(SpriteData data)
     GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, VBO));
     GL_CALL(glBufferData(GL_ARRAY_BUFFER, data.verticesSize, data.vertices, GL_STATIC_DRAW));
     GL_CALL(glEnableVertexAttribArray(0));
-    GL_CALL(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void *) 0));
+    GL_CALL(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *) 0));
     
     // Textures
     GL_CALL(glGenBuffers(1, &TBO));

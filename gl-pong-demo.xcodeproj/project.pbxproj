@@ -24,6 +24,7 @@
 		400F89CD27EC4CB00018E937 /* PhysicsSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 400F89CB27EC4CB00018E937 /* PhysicsSolver.cpp */; };
 		401D7F9C27FAB7ED0007B408 /* Circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 401D7F9A27FAB7ED0007B408 /* Circle.vsh */; };
 		401D7F9D27FAB7ED0007B408 /* Circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 401D7F9B27FAB7ED0007B408 /* Circle.fsh */; };
+		401D7FA227FAFD5B0007B408 /* CollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 401D7FA027FAFD5B0007B408 /* CollisionHandler.cpp */; };
 		402C093127F6D89E007EC63C /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CE27F6D89E007EC63C /* b2Body.cpp */; };
 		402C093227F6D89E007EC63C /* b2World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CF27F6D89E007EC63C /* b2World.cpp */; };
 		402C093327F6D89E007EC63C /* b2Fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C08D027F6D89E007EC63C /* b2Fixture.cpp */; };
@@ -71,10 +72,10 @@
 		402C095D27F6D89E007EC63C /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C092F27F6D89E007EC63C /* b2CollideEdge.cpp */; };
 		402C095E27F6D89E007EC63C /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C093027F6D89E007EC63C /* b2Collision.cpp */; };
 		402C09F527F6DEBF007EC63C /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C09F327F6DEBF007EC63C /* Paddle.cpp */; };
+		40A8615227FBAEFA0066A5E7 /* Wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40A8615027FBAEFA0066A5E7 /* Wall.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4006C6C227F987D20057D175 /* QuadData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadData.h; sourceTree = "<group>"; };
 		4006C6C327F987EA0057D175 /* SpriteRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteRenderer.cpp; sourceTree = "<group>"; };
 		4006C6C427F987EA0057D175 /* SpriteRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteRenderer.hpp; sourceTree = "<group>"; };
 		4006C6C627F9A94E0057D175 /* Ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
@@ -101,6 +102,9 @@
 		400F89CC27EC4CB00018E937 /* PhysicsSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicsSolver.hpp; sourceTree = "<group>"; };
 		401D7F9A27FAB7ED0007B408 /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
 		401D7F9B27FAB7ED0007B408 /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
+		401D7F9F27FAF10F0007B408 /* ScaledVertexData.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = ScaledVertexData.hpp; sourceTree = "<group>"; };
+		401D7FA027FAFD5B0007B408 /* CollisionHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionHandler.cpp; sourceTree = "<group>"; };
+		401D7FA127FAFD5B0007B408 /* CollisionHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionHandler.hpp; sourceTree = "<group>"; };
 		402C08CE27F6D89E007EC63C /* b2Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Body.cpp; sourceTree = "<group>"; };
 		402C08CF27F6D89E007EC63C /* b2World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2World.cpp; sourceTree = "<group>"; };
 		402C08D027F6D89E007EC63C /* b2Fixture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Fixture.cpp; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		402C093027F6D89E007EC63C /* b2Collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Collision.cpp; sourceTree = "<group>"; };
 		402C09F327F6DEBF007EC63C /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
 		402C09F427F6DEBF007EC63C /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
+		40A8615027FBAEFA0066A5E7 /* Wall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
+		40A8615127FBAEFA0066A5E7 /* Wall.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wall.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,13 +266,15 @@
 		400F89B727EC3CB20018E937 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				400F89C927EC44870018E937 /* data */,
+				401D7F9E27FAF0FC0007B408 /* data */,
 				400F89B827EC3CE30018E937 /* Shader.cpp */,
 				400F89B927EC3CE30018E937 /* Shader.hpp */,
 				400F89CB27EC4CB00018E937 /* PhysicsSolver.cpp */,
 				400F89CC27EC4CB00018E937 /* PhysicsSolver.hpp */,
 				4006C6C327F987EA0057D175 /* SpriteRenderer.cpp */,
 				4006C6C427F987EA0057D175 /* SpriteRenderer.hpp */,
+				401D7FA027FAFD5B0007B408 /* CollisionHandler.cpp */,
+				401D7FA127FAFD5B0007B408 /* CollisionHandler.hpp */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -290,10 +298,10 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
-		400F89C927EC44870018E937 /* data */ = {
+		401D7F9E27FAF0FC0007B408 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				4006C6C227F987D20057D175 /* QuadData.h */,
+				401D7F9F27FAF10F0007B408 /* ScaledVertexData.hpp */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -461,6 +469,8 @@
 				402C09F427F6DEBF007EC63C /* Paddle.hpp */,
 				4006C6C627F9A94E0057D175 /* Ball.cpp */,
 				4006C6C727F9A94E0057D175 /* Ball.hpp */,
+				40A8615027FBAEFA0066A5E7 /* Wall.cpp */,
+				40A8615127FBAEFA0066A5E7 /* Wall.hpp */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -555,6 +565,7 @@
 				402C094627F6D89E007EC63C /* b2Joint.cpp in Sources */,
 				402C094A27F6D89E007EC63C /* b2Island.cpp in Sources */,
 				402C093927F6D89E007EC63C /* b2ContactSolver.cpp in Sources */,
+				40A8615227FBAEFA0066A5E7 /* Wall.cpp in Sources */,
 				402C093327F6D89E007EC63C /* b2Fixture.cpp in Sources */,
 				400F89B127EC3A7B0018E937 /* Scene.mm in Sources */,
 				402C093627F6D89E007EC63C /* b2ChainAndCircleContact.cpp in Sources */,
@@ -585,6 +596,7 @@
 				402C095A27F6D89E007EC63C /* b2PolygonShape.cpp in Sources */,
 				4006C6C527F987EA0057D175 /* SpriteRenderer.cpp in Sources */,
 				400F89BA27EC3CE30018E937 /* Shader.cpp in Sources */,
+				401D7FA227FAFD5B0007B408 /* CollisionHandler.cpp in Sources */,
 				402C093D27F6D89E007EC63C /* b2WorldCallbacks.cpp in Sources */,
 				400F899927EC38680018E937 /* SceneDelegate.swift in Sources */,
 				400F89CD27EC4CB00018E937 /* PhysicsSolver.cpp in Sources */,
