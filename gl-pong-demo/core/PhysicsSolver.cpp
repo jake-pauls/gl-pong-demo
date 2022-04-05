@@ -13,7 +13,7 @@
 #include "Ball.hpp"
 
 PhysicsSolver::PhysicsSolver()
-    : _accumulator(0.0f), _playerPaddleXPosition(PADDLE_STARTING_X), _enemyPaddleXPosition(PADDLE_STARTING_X), _lastXInput(0.0f), _ballVelocity(0.0f, 10000.0f)
+    : _accumulator(0.0f), _playerPaddleXPosition(PADDLE_STARTING_X), _enemyPaddleXPosition(PADDLE_STARTING_X), _lastXInput(0.0f), _ballVelocity(0.0f, -10000.0f)
 {
     _gravity = new b2Vec2(0.0f, -9.81f);
     _world = new b2World(*_gravity);
@@ -137,11 +137,31 @@ void PhysicsSolver::Update(float dt)
 }
 
 /// Reverse the ball's y-component when it collides with a surface
-void PhysicsSolver::OnCollision()
+void PhysicsSolver::OnCollision(int value)
 {
     // TODO: Determine ball angles and change velocity vector
-    _ballVelocity.y *= -1;
-    // _ballVelocity.x *= -1;
+    // Collision with Enemy Paddle
+    if (value == 1) {
+        _ballVelocity.y *= -1;
+        if (_ballBody->GetPosition().x - _enemyPaddleXPosition < 0)
+            _ballVelocity.x -= 10000;
+        if (_ballBody->GetPosition().x - _enemyPaddleXPosition > 0)
+            _ballVelocity.x += 10000;
+    }
+    // Collides with Player Paddle
+    if (value == 2) {
+        _ballVelocity.y *= -1;
+        if (_ballBody->GetPosition().x - _playerPaddleXPosition < 0)
+            _ballVelocity.x -= 10000;
+        
+        if (_ballBody->GetPosition().x - _playerPaddleXPosition > 0)
+            _ballVelocity.x += 10000;
+    }
+    
+    // Collides with Wall
+    if (value == 3) {
+        _ballVelocity.x *= -1;
+    }
 }
 
 /// Apply input updates to physics transforms
@@ -157,10 +177,18 @@ void PhysicsSolver::SetPaddleTransformData(float xInput)
             _playerPaddleXPosition -= xSensitivity;
     }
     
-    if (_enemyPaddleXPosition <= (640.0f - PADDLE_WIDTH / 2))
-        _enemyPaddleXPosition += 1.0f;
-    else
-        _enemyPaddleXPosition -= 1.0f;
+    // Set Enemy Paddle AI Direction
+    if (_enemyPaddleXPosition >= (630.0f - PADDLE_WIDTH / 2))
+        directionRight = false;
+    else if (_enemyPaddleXPosition <= (10 + PADDLE_WIDTH / 2))
+        directionRight = true;
+    
+    // Move Enemy Paddle
+    if (directionRight == true)
+        _enemyPaddleXPosition += 10.0f;
+    else if (directionRight == false)
+        _enemyPaddleXPosition -= 10.0f;
+
     
     LOG("leftWall " << _leftWallBody->GetPosition().x << " rightWall " << _rightWallBody->GetPosition().x);
     

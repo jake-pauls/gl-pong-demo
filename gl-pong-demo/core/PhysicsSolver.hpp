@@ -28,7 +28,7 @@ public:
 //    PhysicsSolver(std::pair<float, float> rightWallDimensions, std::pair<float, float> leftWallDimensions);
     
     void Update(float dt);
-    void OnCollision();
+    void OnCollision(int value);
     void SetPaddleTransformData(float xComponent);
     
     PhysicsObjectSet g_PhysicsObjects;
@@ -48,6 +48,7 @@ private:
     b2Body* _ballBody;
     b2Body* _leftWallBody;
     b2Body* _rightWallBody;
+    bool directionRight = true;
     
     // Kinematics
     b2Vec2 _ballVelocity;
