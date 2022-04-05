@@ -28,7 +28,7 @@ public:
 //    PhysicsSolver(std::pair<float, float> rightWallDimensions, std::pair<float, float> leftWallDimensions);
     
     void Update(float dt);
-    void OnCollision();
+    void OnCollision(int value);
     void SetPaddleTransformData(float xComponent);
     
     PhysicsObjectSet g_PhysicsObjects;

@@ -19,8 +19,24 @@ void CollisionHandler::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
     if (state2[0] == b2_addState)
     {
         b2Body* bodyA = contact->GetFixtureA()->GetBody();
-        LOG("bodyA.position.y " << bodyA->GetPosition().y);
+        //LOG("bodyA.position.y " << bodyA->GetPosition().y);
         PhysicsSolver* physicsSolver = (PhysicsSolver*) bodyA->GetUserData();
-        physicsSolver->OnCollision();
+        // Checks for type of body it collided with
+        if (bodyA->GetType() == b2_dynamicBody) {
+            // Collision with Enemy Paddle
+            if (bodyA->GetPosition().y > 568) {
+                physicsSolver->OnCollision(1);
+            }
+            // Collision with Player Paddle
+            if (bodyA->GetPosition().y < 568) {
+                physicsSolver->OnCollision(2);
+            }
+        }
+        // Collision with Wall
+        if (bodyA->GetType() == b2_staticBody) {
+            physicsSolver->OnCollision(3);
+        }
+        
+        
     }
 }
