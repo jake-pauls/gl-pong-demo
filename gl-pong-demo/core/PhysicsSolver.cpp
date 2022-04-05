@@ -119,9 +119,11 @@ void PhysicsSolver::Update(float dt)
         _ballBody->ApplyLinearImpulse(_ballVelocity, _ballBody->GetPosition(), true);
     }
     
+    // Score Condition
     if (_ballBody->GetPosition().y >= 1200 || _ballBody->GetPosition().y <= -5)
     {
         _ballBody->SetTransform(b2Vec2(BALL_STARTING_X, BALL_STARTING_Y), 0.0f);
+        playerScore += 1;
     }
     
     while (_accumulator >= MAX_TIMESTEP)
@@ -157,10 +159,18 @@ void PhysicsSolver::SetPaddleTransformData(float xInput)
             _playerPaddleXPosition -= xSensitivity;
     }
     
-    if (_enemyPaddleXPosition <= (640.0f - PADDLE_WIDTH / 2))
-        _enemyPaddleXPosition += 1.0f;
-    else
-        _enemyPaddleXPosition -= 1.0f;
+    // Set Enemy Paddle AI Direction
+    if (_enemyPaddleXPosition >= (640.0f - PADDLE_WIDTH / 2))
+        directionRight = false;
+    else if (_enemyPaddleXPosition <= (0 + PADDLE_WIDTH / 2))
+        directionRight = true;
+    
+    // Move Enemy Paddle
+    if (directionRight == true)
+        _enemyPaddleXPosition += 2.5f;
+    else if (directionRight == false)
+        _enemyPaddleXPosition -= 2.5f;
+
     
     LOG("leftWall " << _leftWallBody->GetPosition().x << " rightWall " << _rightWallBody->GetPosition().x);
     

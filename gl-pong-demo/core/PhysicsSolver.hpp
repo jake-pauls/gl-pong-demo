@@ -34,6 +34,8 @@ public:
     PhysicsObjectSet g_PhysicsObjects;
     
     bool IsBallLaunched = true;
+    int playerScore = 0;
+    int enemyScore = 0;
     
 private:
     float _accumulator;
@@ -48,6 +50,7 @@ private:
     b2Body* _ballBody;
     b2Body* _leftWallBody;
     b2Body* _rightWallBody;
+    bool directionRight = true;
     
     // Kinematics
     b2Vec2 _ballVelocity;

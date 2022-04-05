@@ -11,12 +11,16 @@ extension ViewController: GLKViewControllerDelegate {
     // Updates scene each frame
     func glkViewControllerUpdate(_ controller: GLKViewController) {
         scene.update()
+        
+        //PlayerScore.text = String(scene.playerScore);
     }
 }
 
 class ViewController: GLKViewController {
     private var context: EAGLContext?
     private var scene: Scene!
+    
+    @IBOutlet weak var PlayerScore: UITextField!
     
     private func setupGLView() {
         context = EAGLContext(api: .openGLES3)

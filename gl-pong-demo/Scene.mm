@@ -54,6 +54,8 @@
 @implementation Scene
 
 @synthesize playerPaddleXInput;
+@synthesize playerScore;
+@synthesize enemyScore;
 
 - (void)dealloc
 {
@@ -125,6 +127,7 @@
     _lastTime = currentTime;
 
     _physics->Update(elapsedTime / 1000.0f);
+    playerScore = _physics->playerScore;
     
     // Update player paddle transforms
     _physics->SetPaddleTransformData(playerPaddleXInput);
