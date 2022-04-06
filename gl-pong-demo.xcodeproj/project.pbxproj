@@ -72,10 +72,10 @@
 		402C095D27F6D89E007EC63C /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C092F27F6D89E007EC63C /* b2CollideEdge.cpp */; };
 		402C095E27F6D89E007EC63C /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C093027F6D89E007EC63C /* b2Collision.cpp */; };
 		402C09F527F6DEBF007EC63C /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 402C09F327F6DEBF007EC63C /* Paddle.cpp */; };
-		402F9A7927FCD534002CC90A /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 402F9A7727FCD52E002CC90A /* arial.ttf */; };
 		4046B60827FC267800E1AD21 /* libFreetype2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4046B60727FC267800E1AD21 /* libFreetype2.a */; };
 		4046B60B27FC26F300E1AD21 /* Scoreboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4046B60927FC26F300E1AD21 /* Scoreboard.cpp */; };
 		4046B60E27FC2B0700E1AD21 /* FTText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4046B60C27FC2B0700E1AD21 /* FTText.cpp */; };
+		40ABF1A227FD2024009CB823 /* pong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40ABF1A127FD1FF1009CB823 /* pong.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -203,7 +203,6 @@
 		402C093027F6D89E007EC63C /* b2Collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Collision.cpp; sourceTree = "<group>"; };
 		402C09F327F6DEBF007EC63C /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
 		402C09F427F6DEBF007EC63C /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
-		402F9A7727FCD52E002CC90A /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 		4046B60727FC267800E1AD21 /* libFreetype2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2.a; sourceTree = "<group>"; };
 		4046B60927FC26F300E1AD21 /* Scoreboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Scoreboard.cpp; sourceTree = "<group>"; };
 		4046B60A27FC26F300E1AD21 /* Scoreboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scoreboard.hpp; sourceTree = "<group>"; };
@@ -294,6 +293,7 @@
 		4046B66627FC309700E1AD21 /* ftbdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftbdf.h; sourceTree = "<group>"; };
 		4046B66727FC309700E1AD21 /* ftrender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftrender.h; sourceTree = "<group>"; };
 		40AB0C2B27FCB4D700A041D6 /* Obj-C-Utils-Interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Obj-C-Utils-Interface.h"; sourceTree = "<group>"; };
+		40ABF1A127FD1FF1009CB823 /* pong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pong.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +379,7 @@
 		400F89BB27EC3D4A0018E937 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				402F9A7627FCD526002CC90A /* fonts */,
 				400F89BC27EC3D4E0018E937 /* shaders */,
 			);
 			path = res;
@@ -562,7 +563,6 @@
 		402C09F227F6DE89007EC63C /* objects */ = {
 			isa = PBXGroup;
 			children = (
-				402F9A7627FCD526002CC90A /* fonts */,
 				402C09F327F6DEBF007EC63C /* Paddle.cpp */,
 				402C09F427F6DEBF007EC63C /* Paddle.hpp */,
 				4006C6C627F9A94E0057D175 /* Ball.cpp */,
@@ -576,7 +576,7 @@
 		402F9A7627FCD526002CC90A /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				402F9A7727FCD52E002CC90A /* arial.ttf */,
+				40ABF1A127FD1FF1009CB823 /* pong.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -764,11 +764,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40ABF1A227FD2024009CB823 /* pong.ttf in Resources */,
 				400F89A327EC386A0018E937 /* LaunchScreen.storyboard in Resources */,
 				400F89A027EC386A0018E937 /* Assets.xcassets in Resources */,
 				400F89BF27EC3D710018E937 /* Shader.vsh in Resources */,
 				401D7F9D27FAB7ED0007B408 /* Circle.fsh in Resources */,
-				402F9A7927FCD534002CC90A /* arial.ttf in Resources */,
 				400F899E27EC38680018E937 /* Main.storyboard in Resources */,
 				401D7F9C27FAB7ED0007B408 /* Circle.vsh in Resources */,
 				400F89C027EC3D710018E937 /* Shader.fsh in Resources */,

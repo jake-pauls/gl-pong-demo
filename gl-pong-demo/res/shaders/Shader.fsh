@@ -21,7 +21,7 @@ void main()
         if (texColor.a < 0.1)
             discard;
         
-        fc = texColor * vec4(0.8f, 0.1f, 0.1f, 0.5f);
+        fc = texColor * vec4(1.0f, 1.0f, 1.0f, 1.0f);
     } else {
         fc = v_color;
     }

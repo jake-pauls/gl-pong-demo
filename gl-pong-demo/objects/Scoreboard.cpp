@@ -19,7 +19,7 @@ Scoreboard::Scoreboard(SpriteRenderer* sprite, glm::vec3 pos)
 {
     _ftText = new FTText;
     _fontPositions = glm::vec2(0.1f, 0.2f);
-    _fontSize = 32;
+    _fontSize = 16;
     _fontDpi = 100;
 }
 
@@ -48,12 +48,12 @@ void Scoreboard::Draw(Shader *shaderProgram, int playerScore, int enemyScore)
         _stream << playerScore << " : " << enemyScore;
         
         // Draw text to internal bitmap
-        _ftText->DrawText(RetrieveObjectiveCPath("arial.ttf"), _stream.str().c_str(), _fontSize, _fontDpi, _fontPositions.x, _fontPositions.y);
+        _ftText->DrawText(RetrieveObjectiveCPath("pong.ttf"), _stream.str().c_str(), _fontSize, _fontDpi, _fontPositions.x, _fontPositions.y);
 
         GL_CALL(glGenTextures(1, &_textureId));
         GL_CALL(glBindTexture(GL_TEXTURE_2D, _textureId));
         GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST));
-
+        
         // Create texture for text using internal bitmap
         GL_CALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, IMAGE_WIDTH, IMAGE_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, (void *) _ftText->texture));
         
@@ -69,5 +69,6 @@ void Scoreboard::Draw(Shader *shaderProgram, int playerScore, int enemyScore)
     
     GL_CALL(glBindVertexArray(_sprite->VAO));
     GL_CALL(glDrawArrays(GL_TRIANGLES, 0, 6));
+    
     GL_CALL(glBindVertexArray(0));
 }
