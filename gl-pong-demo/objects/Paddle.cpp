@@ -29,6 +29,7 @@ void Paddle::Draw(Shader* shaderProgram)
 {
     shaderProgram->Bind();
     
+    shaderProgram->SetUniform1i("useTexture", 0);
     shaderProgram->SetUniformMatrix4fv("_mvpMatrix", glm::value_ptr(_mvpMatrix));
     shaderProgram->SetUniform4f("_color", 1.0f, 1.0f, 1.0f, 1.0);
     

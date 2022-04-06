@@ -198,10 +198,6 @@ void PhysicsSolver::SetPaddleTransformData(float xInput)
     else if (directionRight == false)
         _enemyPaddleXPosition -= 2.5f;
 
-
-    
-    //LOG("leftWall " << _leftWallBody->GetPosition().x << " rightWall " << _rightWallBody->GetPosition().x);
-    
     // Player/enemy y-components are constantly being set which prevents them from being manipulated by forces
     _playerPaddleBody->SetTransform(b2Vec2(_playerPaddleXPosition, PADDLE_PLAYER_STARTING_Y), 0.0f);
     _enemyPaddleBody->SetTransform(b2Vec2(_enemyPaddleXPosition, PADDLE_ENEMY_STARTING_Y), 0.0f);

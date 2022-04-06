@@ -21,6 +21,8 @@
 - (void)update;
 - (void)draw;
 
++ (const char*)RetrieveFilePathByName:(const char*)fileName;
+
 @end
 
 #endif /* Scene_h */

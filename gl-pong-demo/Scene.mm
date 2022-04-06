@@ -23,6 +23,7 @@
 
 #include "Paddle.hpp"
 #include "Ball.hpp"
+#include "Scoreboard.hpp"
 
 @interface Scene () {
     GLKView* _viewport;
@@ -41,9 +42,11 @@
     Paddle* _playerPaddle;
     Paddle* _enemyPaddle;
     Ball* _ball;
+    Scoreboard* _scoreboard;
     
     // Sprites
     SpriteRenderer* _scaledSprite;
+    SpriteRenderer* _scoreboardSprite;
     
     // Physics
     PhysicsSolver* _physics;
@@ -68,6 +71,7 @@
     
     // Sprites
     delete _scaledSprite;
+    delete _scoreboardSprite;
    
     // Objects
     delete _playerPaddle;
@@ -101,6 +105,7 @@
     
     // Sprites
     _scaledSprite = new SpriteRenderer();
+    _scoreboardSprite = new SpriteRenderer();
 }
 
 - (void)loadModels
@@ -112,6 +117,8 @@
     _enemyPaddle = new Paddle(_scaledSprite);
     
     _ball = new Ball(_scaledSprite);
+    
+    _scoreboard = new Scoreboard(_scoreboardSprite, glm::vec3(320.0f, 568.0f, 0.5f));
 }
 
 - (void)update
@@ -144,6 +151,9 @@
     
     if (_physics->g_PhysicsObjects.find("BALL") != _physics->g_PhysicsObjects.end())
         _ball->Update(_viewProjectionMatrix, _physics->g_PhysicsObjects["BALL"]);
+    
+    // Scoreboard updates in isolation of physics
+    _scoreboard->Update(_viewProjectionMatrix);
 }
 
 - (void)draw
@@ -157,16 +167,25 @@
     _enemyPaddle->Draw(_defaultShaderProgram);
     
     _ball->Draw(_circleShaderProgram);
+    
+    _scoreboard->Draw(_defaultShaderProgram, playerScore, enemyScore);
 }
 
 /// Loads sprites with relevant render data
 - (bool)loadSprites
 {
     _scaledSprite->SetupSprite(SpriteRenderer::SpriteData{
-        ScaledVerticies,
-        sizeof(ScaledVerticies),
-        ScaledVerticies,
-        sizeof(ScaledVerticies)
+        ScaledVertices,
+        sizeof(ScaledVertices),
+        ScaledTextureCoords,
+        sizeof(ScaledTextureCoords)
+    });
+    
+    _scoreboardSprite->SetupSprite(SpriteRenderer::SpriteData{
+        BasicVertices,
+        sizeof(BasicVertices),
+        BasicTextureCoords,
+        sizeof(BasicTextureCoords)
     });
     
     return true;
@@ -175,16 +194,21 @@
 /// Sets up basic shaders
 - (bool)setupShaders
 {
-    _defaultShaderProgram = new Shader([self retrieveFilePathByName:"Shader.vsh"], [self retrieveFilePathByName:"Shader.fsh"]);
-    _circleShaderProgram = new Shader([self retrieveFilePathByName:"Circle.vsh"], [self retrieveFilePathByName:"Circle.fsh"]);
+    _defaultShaderProgram = new Shader([Scene RetrieveFilePathByName:"Shader.vsh"], [Scene RetrieveFilePathByName:"Shader.fsh"]);
+    _circleShaderProgram = new Shader([Scene RetrieveFilePathByName:"Circle.vsh"], [Scene RetrieveFilePathByName:"Circle.fsh"]);
     
     return true;
 }
 
 /// Retrieves resources within the Xcode project
-- (const char*)retrieveFilePathByName:(const char*)fileName
++ (const char*)RetrieveFilePathByName:(const char*)fileName
 {
     return [[[NSBundle mainBundle] pathForResource:[[NSString stringWithUTF8String:fileName] stringByDeletingPathExtension] ofType:[[NSString stringWithUTF8String:fileName] pathExtension]] cStringUsingEncoding:1];
+}
+
+const char* RetrieveObjectiveCPath(const char* fileName)
+{
+    return [Scene RetrieveFilePathByName:fileName];
 }
 
 @end

@@ -6,9 +6,26 @@ precision highp float;
 out vec4 FragColor;
 
 in vec4 v_color;
+in vec2 v_textures;
+
+uniform bool useTexture;
+uniform sampler2D texSampler;
 
 void main()
 {
-    FragColor = v_color;
+    vec4 fc = vec4(0.0f);
+    
+    if (useTexture) {
+        vec4 texColor = texture(texSampler, v_textures);
+        
+        if (texColor.a < 0.1)
+            discard;
+        
+        fc = texColor * vec4(0.8f, 0.1f, 0.1f, 0.5f);
+    } else {
+        fc = v_color;
+    }
+    
+    FragColor = fc;
 }
 
