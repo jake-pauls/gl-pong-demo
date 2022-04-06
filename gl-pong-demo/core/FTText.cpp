@@ -32,6 +32,9 @@ void FTText::DrawText(const char* fontName, const char* text, int fontPtSize, in
     pen.x = (int)(x * 256) * 64;
     pen.y = (IMAGE_HEIGHT - (int)(y * 256)) * 64;
     
+    // Reset texture to RGB * Width * Height
+    memset(texture, 0, 4 * IMAGE_WIDTH * IMAGE_HEIGHT);
+    
     size_t numChars = strlen(text);
     int n;
     for (n = 0; n < numChars; n++)

@@ -44,7 +44,7 @@ private:
     std::stringstream _stream;
     std::pair<int, int> _scorePair;
     
-    // Text Rendering
+    // Text rendering
     GLuint _textureId;
     FTText* _ftText;
     glm::vec2 _fontPositions;
