@@ -35,10 +35,34 @@ class ViewController: GLKViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGLView()
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.doPan(_:)))
+        view.addGestureRecognizer(panGesture)
     }
     
     // Renders the scene each frame
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         scene.draw()
+    }
+    
+    @objc func doPan(_ sender: UIPanGestureRecognizer) {
+        let changedDistance = sender.translation(in: view)
+        
+        if changedDistance.x > 25 {
+            scene.playerPaddleXInput = Float(changedDistance.x)
+            sender.setTranslation(.zero, in: view)
+            sender.reset()
+        }
+        
+        if changedDistance.x < -25 {
+            scene.playerPaddleXInput = Float(changedDistance.x)
+            sender.setTranslation(.zero, in: view)
+            sender.reset()
+        }
+        
+        // Reset the x displacement once the gesture ends
+        if sender.state == .ended {
+            scene.playerPaddleXInput = 0.0
+        }
     }
 }
